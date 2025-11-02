@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+ 
+</head>
+<body>
+   <style>
+  
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 360px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin: 10px 0 5px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus,
+    input[type="date"]:focus {
+      border-color: #2575fc;
+      box-shadow: 0 0 5px rgba(37, 117, 252, 0.5);
+    }
+
+    button {
+      width: 100%;
+      background-color: #2575fc;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+    .message {
+      margin-top: 15px;
+      font-size: 14px;
+      color: green;
+    }
+    
+  </style>
+  <div class="container">
+    <h2>Register Page</h2>
+    <label>Enter Your UserName : </label>
+    <input type="text" id="regUsername" placeholder="Username" required>
+    <label>Enter Your Date Of Birth : </label>
+    <input type="date" id="regDob" required>
+    <label>Enter Your Password : </label>
+    <input type="password" id="regPassword" placeholder="Password" required><br/>
+    <br/><button onclick="register()">Register</button>
+    <p class="message" id="message"></p>
+  </div>
+
+  <script>
+    function register() {
+      const username = document.getElementById('regUsername').value.trim();
+      const dob = document.getElementById('regDob').value;
+      const password = document.getElementById('regPassword').value.trim();
+
+      if (!username || !dob || !password) {
+        alert("Please fill in all fields!");
+        return;
+      }
+
+      const userData = { username, dob, password };
+      localStorage.setItem('userData', JSON.stringify(userData));
+
+      document.getElementById('message').textContent = "Registration successful!...";
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
